@@ -22,3 +22,7 @@ html, body {
 .gray {
   color: #aaaaaa;
 }
+
+.day {
+  float: left;
+}
