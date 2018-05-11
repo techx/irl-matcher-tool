@@ -18,3 +18,7 @@ html, body {
 .btn:active {
   background: #008;
 }
+
+.gray {
+  color: #aaaaaa;
+}
