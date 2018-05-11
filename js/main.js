@@ -18,16 +18,15 @@ const IRLMatcher = (() => {
   function render(days) {
     const container = document.getElementById('container');
     const colors = [
-      '#ffdddd', '#ddffdd', '#ddddff',
-      '#ddffff', '#ffddff', '#ffffdd',
-      '#eeeeee'
+      '#2E382E', '#4ABBBF', '#72A1E5', 
+      '#9883E5', '#FCD3DE', '#eeeeee'
     ];
     let i = 0;
     let first = false;
     for (let day in days) {
       const dayDiv = document.createElement('div');
-      i = (i + 1) % colors.length;
       dayDiv.style.background = colors[i];
+      i = (i + 1) % colors.length;
       dayDiv.style.width = (100.0 / Object.keys(days).length) + '%';
       dayDiv.className = 'day';
       if (!first) {

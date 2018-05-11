@@ -1,6 +1,7 @@
 html, body {
   padding: 1rem;
   margin: 0;
+  color: #333333;
 }
 
 .btn {
@@ -20,12 +21,21 @@ html, body {
 }
 
 .gray {
-  color: #aaaaaa;
+  color: #c2c2c2;
+}
+
+.first .gray {
+  color: #666666;
+}
+
+li {
+  user-select: none;
 }
 
 .first {
   border-top-left-radius: 0.4rem;
   border-bottom-left-radius: 0.4rem;
+  color: #aaaaaa;
 }
 
 .last {
