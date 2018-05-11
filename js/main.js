@@ -1,10 +1,12 @@
 const IRLMatcher = (() => {
   function initIRLMatcher() {
-    document.getElementById('load').addEventListener('click', () => {
+    document.getElementById('data').addEventListener('change', () => {
+      // document.getElementById('container').innerHTML = '';
       const text = document.getElementById('data').value;
       const parsed = parseData(text);
       const grouped = groupByAvailability(parsed);
       const days = groupByDay(grouped);
+      console.log(days);
       render(days);
     });
   }
@@ -21,15 +23,24 @@ const IRLMatcher = (() => {
       '#eeeeee'
     ];
     let i = 0;
-    console.log(days);
+    let first = false;
     for (let day in days) {
       const dayDiv = document.createElement('div');
-      dayDiv.style.background = colors[i++];
+      i = (i + 1) % colors.length;
+      dayDiv.style.background = colors[i];
+      dayDiv.style.width = (100.0 / Object.keys(days).length) + '%';
       dayDiv.className = 'day';
+      if (!first) {
+        dayDiv.className = 'first day';
+        first = true;
+      } else if (day.startsWith('None')) {
+        dayDiv.className = 'last day';
+      }
+
       for (let date in days[day]) {
         const row = document.createElement('div');
-        const h3 = document.createElement('h3');
-        h3.innerHTML = date;
+        const h4 = document.createElement('h4');
+        h4.innerHTML = date;
         const ul = document.createElement('ul');
         days[day][date].forEach(person => {
           const li = document.createElement('li');
@@ -48,7 +59,7 @@ const IRLMatcher = (() => {
           });
           ul.appendChild(li);
         });
-        row.appendChild(h3);
+        row.appendChild(h4);
         row.appendChild(ul);
         dayDiv.appendChild(row);
       }
@@ -60,8 +71,9 @@ const IRLMatcher = (() => {
     const days = {};
     for (let date in data) {
       const day = date.split(' ').slice(0, 2).join(' ');
+      const smallDate = date.split(' ').slice(0, 3).join(' ');
       if (!days.hasOwnProperty(day)) days[day] = {};
-      days[day][date] = data[date];
+      days[day][smallDate] = data[date];
     }
     return days;
   }

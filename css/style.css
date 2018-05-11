@@ -1,5 +1,5 @@
 html, body {
-  padding: 0;
+  padding: 1rem;
   margin: 0;
 }
 
@@ -23,6 +23,31 @@ html, body {
   color: #aaaaaa;
 }
 
+.first {
+  border-top-left-radius: 0.4rem;
+  border-bottom-left-radius: 0.4rem;
+}
+
+.last {
+  border-top-right-radius: 0.4rem;
+  border-bottom-right-radius: 0.4rem;
+}
+
 .day {
   float: left;
+  padding: 1rem 1rem 0.5rem;
+}
+
+textarea#data {
+  width: 100%;
+  overflow: hidden;
+  min-height: 3rem;
+  max-height: 3rem;
+  line-height: 3rem;
+  max-width: 100%;
+  resize: none;
+}
+
+ul {
+  list-style-type: none;
 }
